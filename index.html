@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>재승 ♥ 환주 결혼합니다</title>
+<meta property="og:title" content="재승 ♥ 환주 결혼합니다">
+<meta property="og:description" content="2026년 11월 14일 토요일">
+<meta property="og:image" content="https://awjae.github.io/wedding/images/og.jpg">
+<meta property="og:url" content="https://awjae.github.io/wedding/">
+<meta property="og:type" content="website">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Serif+KR:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  :root {
+    --bg: #faf8f5;
+    --card: #ffffff;
+    --ink: #3b3733;
+    --sub: #8c847c;
+    --line: #ebe5de;
+    --accent: #b88f76;
+    --accent-soft: #f3ebe4;
+    --serif: "Noto Serif KR", serif;
+    --en: "Cormorant Garamond", serif;
+    --sans: "Pretendard", -apple-system, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: #eeeae5; color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.8; -webkit-font-smoothing: antialiased; }
+  main { max-width: 430px; margin: 0 auto; background: var(--bg); overflow: hidden; box-shadow: 0 0 40px rgba(0,0,0,.06); }
+  section { padding: 88px 28px; text-align: center; }
+  section + section { border-top: 1px solid var(--line); }
+  .eyebrow { font-family: var(--en); font-style: italic; color: var(--accent); font-size: 15px; letter-spacing: .2em; text-transform: uppercase; }
+  h2 { font-family: var(--serif); font-weight: 400; font-size: 21px; margin: 6px 0 36px; letter-spacing: .02em; }
+  button { font: inherit; color: inherit; border: 0; background: none; cursor: pointer; }
+  a { color: inherit; text-decoration: none; }
+
+  /* placeholder: 이미지가 없으면 라벨이 보이고, 파일을 넣으면 자동으로 덮어씀 */
+  .ph { position: relative; overflow: hidden; background: linear-gradient(135deg, #ede6df, #ddd3c9); }
+  .ph::after { content: attr(data-label); position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--en); font-style: italic; color: #a39689; font-size: 14px; letter-spacing: .1em; }
+  .ph > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
+
+  /* hero */
+  .hero { padding: 0; position: relative; }
+  .hero .ph { aspect-ratio: 3/4.4; }
+  .hero .ph::before { content: ""; position: absolute; inset: 0; z-index: 2; background: linear-gradient(180deg, rgba(0,0,0,.18) 0%, transparent 30%, transparent 55%, rgba(250,248,245,1) 100%); }
+  .hero-top { position: absolute; top: 44px; left: 0; right: 0; z-index: 3; color: #fff; font-family: var(--en); letter-spacing: .35em; font-size: 13px; }
+  .hero-text { position: relative; z-index: 3; margin-top: -120px; padding: 0 28px 72px; }
+  .hero-date { font-family: var(--en); font-size: 44px; font-weight: 400; letter-spacing: .08em; line-height: 1; }
+  .hero-names { font-family: var(--serif); font-size: 19px; margin: 22px 0 6px; letter-spacing: .15em; }
+  .hero-names span { color: var(--accent); margin: 0 10px; font-size: 14px; }
+  .hero-sub { color: var(--sub); font-size: 13.5px; }
+
+  /* greeting */
+  .poem { font-family: var(--serif); font-size: 14.5px; line-height: 2.2; color: #5a534c; font-weight: 300; }
+  .parents { margin-top: 48px; display: grid; gap: 10px; font-size: 15px; }
+  .parents b { font-weight: 600; font-size: 16px; margin-left: 6px; }
+  .parents small { color: var(--sub); margin: 0 6px; font-size: 13px; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 12px 22px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); font-size: 13.5px; transition: background .2s; }
+  .btn:active { background: var(--accent-soft); }
+
+  /* calendar */
+  .cal-head { font-family: var(--serif); font-size: 15px; margin-bottom: 4px; }
+  .cal-head + p { color: var(--sub); font-size: 13px; margin-bottom: 28px; }
+  .cal { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px 0; padding: 22px 6px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); font-size: 14px; }
+  .cal .dow { font-size: 12px; color: var(--sub); padding-bottom: 8px; }
+  .cal div { height: 38px; display: grid; place-items: center; }
+  .cal .sun { color: #d07b6e; }
+  .cal .day.on { background: var(--accent); color: #fff; border-radius: 50%; width: 38px; margin: 0 auto; font-weight: 600; }
+  .countdown { margin-top: 36px; font-family: var(--en); font-size: 48px; font-weight: 500; letter-spacing: .06em; color: var(--accent); line-height: 1; }
+  .dday-msg { margin-top: 24px; font-size: 14px; }
+  .dday-msg em { color: var(--accent); font-style: normal; font-weight: 600; }
+
+  /* gallery */
+  .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
+  .gallery .ph { aspect-ratio: 1; cursor: pointer; border-radius: 4px; }
+  .gallery .ph::after { font-size: 12px; }
+  dialog { border: 0; padding: 0; background: transparent; max-width: 100vw; max-height: 100vh; width: 100%; height: 100%; }
+  dialog::backdrop { background: rgba(20,18,16,.94); }
+  .lb { position: relative; height: 100%; display: grid; place-items: center; }
+  .lb .ph { width: min(92vw, 420px); aspect-ratio: 3/4; border-radius: 6px; }
+  .lb .ph > img { object-fit: contain; background: #111; }
+  .lb button { position: absolute; color: #fff; font-size: 28px; width: 48px; height: 48px; }
+  .lb .close { top: max(16px, env(safe-area-inset-top)); right: 12px; }
+  .lb .prev { left: 4px; } .lb .next { right: 4px; }
+  .lb .count { position: absolute; bottom: 40px; color: #ccc; font-family: var(--en); letter-spacing: .2em; }
+
+  /* guestbook */
+  .notice { color: var(--sub); font-size: 13.5px; margin-bottom: 28px; }
+  .gb-form { background: var(--card); border-radius: 14px; padding: 20px; text-align: left; box-shadow: 0 2px 12px rgba(0,0,0,.03); display: grid; gap: 10px; }
+  .gb-form input, .gb-form textarea { width: 100%; font: inherit; font-size: 14px; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; outline: none; resize: none; }
+  .gb-form input:focus, .gb-form textarea:focus { border-color: var(--accent); }
+  .gb-count { text-align: right; font-size: 12px; color: var(--sub); margin-top: -4px; }
+  .gb-count.full { color: #d07b6e; }
+  .gb-form .btn { background: var(--accent); color: #fff; border: 0; border-radius: 8px; padding: 14px; }
+  .gb-form .btn:disabled { opacity: .5; }
+  .gb-hp { position: absolute; left: -9999px; }
+  .gb-list { display: grid; gap: 12px; margin-top: 28px; text-align: left; }
+  .gb-item { background: var(--card); border-radius: 14px; padding: 18px 20px; box-shadow: 0 2px 12px rgba(0,0,0,.03); }
+  .gb-item p { white-space: pre-wrap; word-break: break-all; font-size: 14px; color: #5a534c; }
+  .gb-item div { display: flex; justify-content: space-between; margin-top: 10px; font-size: 12.5px; }
+  .gb-item b { font-weight: 600; }
+  .gb-item time { color: var(--sub); }
+  .gb-empty { color: var(--sub); font-size: 13.5px; text-align: center; padding: 20px 0; }
+  .gb-more { margin-top: 16px; }
+
+  /* footer */
+  .closing .ph { aspect-ratio: 1; border-radius: 50%; width: 180px; margin: 0 auto 36px; }
+  .share { display: grid; gap: 10px; margin-top: 40px; }
+  .share .btn { border-radius: 8px; padding: 14px; }
+  footer { padding: 32px; text-align: center; font-family: var(--en); color: #b5aca3; font-size: 12px; letter-spacing: .2em; }
+
+  .toast { position: fixed; left: 50%; bottom: 40px; transform: translate(-50%, 20px); background: rgba(40,36,32,.9); color: #fff; padding: 10px 20px; border-radius: 999px; font-size: 13px; opacity: 0; transition: .3s; pointer-events: none; z-index: 100; }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+  /* scroll reveal */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 1s ease, transform 1s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+</style>
+</head>
+<body>
+<main>
+
+  <!-- ① 메인 -->
+  <section class="hero">
+    <div class="ph" data-label="images/main.jpg"><img src="images/main.jpg" alt="메인 사진" onerror="this.remove()"></div>
+    <p class="hero-top">WEDDING INVITATION</p>
+    <div class="hero-text reveal">
+      <p class="hero-date">26.11.14</p>
+      <p class="hero-names">어재승<span>&amp;</span>이환주</p>
+      <p class="hero-sub">2026년 11월 14일 토요일</p>
+    </div>
+  </section>
+
+  <!-- ② 인사말 -->
+  <section>
+    <div class="reveal">
+      <p class="eyebrow">Our Wedding</p>
+      <h2>저희 결혼합니다</h2>
+      <p class="poem">
+        서로 다른 길을 걸어온 두 사람이<br>
+        이제 같은 곳을 바라보며<br>
+        함께 걸어가려 합니다.<br><br>
+        예식은 양가 가족들만 모여<br>
+        조촐하고 따뜻하게 치르기로 하였습니다.<br>
+        직접 모시지 못하는 마음 너그러이 헤아려 주시고,<br>
+        멀리서나마 두 사람의 앞날을<br>
+        축복해 주시면 감사하겠습니다.
+      </p>
+      <div class="parents">
+        <p>어성준 · 김선경<small>의 아들</small><b>어재승</b></p>
+        <p>이도순 · 김선영<small>의 딸</small><b>이환주</b></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ③ 달력 & D-day -->
+  <section>
+    <div class="reveal">
+      <p class="eyebrow">Wedding Day</p>
+      <h2>2026. 11. 14</h2>
+      <p class="cal-head">토요일</p>
+      <p>Saturday, November 14, 2026</p>
+      <div class="cal" id="cal"></div>
+      <div class="countdown" id="countdown"></div>
+      <p class="dday-msg" id="ddayMsg"></p>
+    </div>
+  </section>
+
+  <!-- ④ 갤러리 -->
+  <section>
+    <div class="reveal">
+      <p class="eyebrow">Gallery</p>
+      <h2>우리의 순간들</h2>
+      <div class="gallery" id="gallery"></div>
+    </div>
+  </section>
+
+  <!-- ⑤ 방명록 -->
+  <section>
+    <div class="reveal">
+      <p class="eyebrow">Guestbook</p>
+      <h2>방명록</h2>
+      <p class="notice">두 사람에게 축하의 마음을 남겨주세요.</p>
+      <form class="gb-form" id="gbForm">
+        <input name="name" placeholder="이름" maxlength="15" required autocomplete="name">
+        <textarea name="message" rows="4" placeholder="축하 메시지를 남겨주세요" maxlength="200" required></textarea>
+        <!-- 스팸 봇 유인용. 사람에게는 보이지 않음 -->
+        <input name="hp" class="gb-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <p class="gb-count"><span id="gbCount">0</span> / 200</p>
+        <button class="btn" type="submit">남기기</button>
+      </form>
+      <div class="gb-list" id="gbList"><p class="gb-empty">불러오는 중…</p></div>
+      <button class="btn gb-more" id="gbMore" hidden>더보기</button>
+    </div>
+  </section>
+
+  <!-- ⑥ 마무리 -->
+  <section class="closing">
+    <div class="reveal">
+      <div class="ph" data-label="images/closing.jpg"><img src="images/closing.jpg" alt="" onerror="this.remove()"></div>
+      <p class="poem">함께해 주셔서 감사합니다.<br>예쁘게 잘 살겠습니다.</p>
+      <div class="share">
+        <button class="btn" id="shareBtn">🔗 청첩장 공유하기</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>JAESEUNG &amp; HWANJU</footer>
+</main>
+
+<dialog id="lightbox">
+  <div class="lb">
+    <div class="ph" id="lbPh"></div>
+    <button class="close" aria-label="닫기">✕</button>
+    <button class="prev" aria-label="이전">‹</button>
+    <button class="next" aria-label="다음">›</button>
+    <p class="count" id="lbCount"></p>
+  </div>
+</dialog>
+
+<div class="toast" id="toast"></div>
+
+<script>
+  const WEDDING = new Date(2026, 10, 14);       // 월은 0부터 (10 = 11월)
+  const GALLERY_COUNT = 9;                      // images/gallery-1.jpg ~ gallery-9.jpg
+
+  const $ = s => document.querySelector(s);
+  const toast = msg => { const t = $('#toast'); t.textContent = msg; t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 1800); };
+  const phImg = src => `<img src="${src}" alt="" onerror="this.remove()">`;
+
+  // 달력
+  (() => {
+    const y = WEDDING.getFullYear(), m = WEDDING.getMonth();
+    const first = new Date(y, m, 1).getDay(), last = new Date(y, m + 1, 0).getDate();
+    let html = ['일','월','화','수','목','금','토'].map((d, i) => `<div class="dow${i ? '' : ' sun'}">${d}</div>`).join('');
+    html += '<div></div>'.repeat(first);
+    for (let d = 1; d <= last; d++) {
+      const sun = (first + d - 1) % 7 === 0 ? ' sun' : '';
+      html += `<div class="day${sun}${d === WEDDING.getDate() ? ' on' : ''}">${d}</div>`;
+    }
+    $('#cal').innerHTML = html;
+  })();
+
+  // D-day (날짜 기준)
+  (() => {
+    const now = new Date(), today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const days = Math.round((WEDDING - today) / 86400000);
+    $('#countdown').textContent = days > 0 ? `D-${days}` : days === 0 ? 'D-DAY' : `D+${-days}`;
+    $('#ddayMsg').innerHTML = days > 0 ? `재승 ♥ 환주의 결혼식이 <em>${days}일</em> 남았습니다.`
+      : days === 0 ? '<em>오늘</em> 결혼합니다!' : `재승 ♥ 환주가 결혼한 지 <em>${-days}일</em>째입니다.`;
+  })();
+
+  // 갤러리 + 라이트박스
+  const srcs = Array.from({ length: GALLERY_COUNT }, (_, i) => `images/gallery-${i + 1}.jpg`);
+  $('#gallery').innerHTML = srcs.map((s, i) => `<div class="ph" data-label="${i + 1}" data-i="${i}">${phImg(s)}</div>`).join('');
+  let cur = 0;
+  const lb = $('#lightbox');
+  const show = i => {
+    cur = (i + srcs.length) % srcs.length;
+    $('#lbPh').dataset.label = srcs[cur];
+    $('#lbPh').innerHTML = phImg(srcs[cur]);
+    $('#lbCount').textContent = `${cur + 1} / ${srcs.length}`;
+  };
+  $('#gallery').onclick = e => { const p = e.target.closest('[data-i]'); if (p) { show(+p.dataset.i); lb.showModal(); } };
+  lb.querySelector('.close').onclick = () => lb.close();
+  lb.querySelector('.prev').onclick = () => show(cur - 1);
+  lb.querySelector('.next').onclick = () => show(cur + 1);
+  lb.onclick = e => { if (e.target.classList.contains('lb')) lb.close(); };
+  let x0 = null;
+  lb.addEventListener('touchstart', e => x0 = e.touches[0].clientX, { passive: true });
+  lb.addEventListener('touchend', e => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 50) show(cur + (dx < 0 ? 1 : -1)); x0 = null; });
+  document.addEventListener('keydown', e => { if (!lb.open) return; if (e.key === 'ArrowLeft') show(cur - 1); if (e.key === 'ArrowRight') show(cur + 1); });
+
+  // 방명록: GUESTBOOK_URL 에 Google Apps Script 웹앱 주소를 넣으면 실제 저장 (guestbook.gs 참고)
+  //        비어 있으면 이 브라우저에만 저장되는 미리보기 모드
+  const GUESTBOOK_URL = 'https://script.google.com/macros/s/AKfycbwT_y-hWZj6drGskUfiL1v9Iko6KlmHLjoeTGK4_4qP3_edkV_J9ZrylPbfX8rOff7N/exec';
+  // 미리보기용 더미 메시지 (GUESTBOOK_URL 을 넣으면 사용되지 않음)
+  const GUESTBOOK_DUMMY = [
+    { name: '민지', message: '재승아 환주야 결혼 정말 축하해! 🎉\n둘이 함께하는 모습 보기만 해도 행복해 보여. 앞으로도 지금처럼 예쁘게 살아!', date: '2026-10-05' },
+    { name: '김현우', message: '직접 가서 축하하지 못해 아쉽지만 멀리서나마 진심으로 축하드립니다. 평생 행복하세요!', date: '2026-10-03' },
+    { name: '환주 회사 동기', message: '우리 환주 드디어 결혼하는구나 🥹 세상에서 제일 행복한 신부가 되길!', date: '2026-10-01' },
+    { name: '박지성', message: '두 분의 새로운 출발을 축하합니다.\n서로 아끼고 사랑하며 늘 웃음 가득한 가정 꾸리시길 바랍니다.', date: '2026-09-28' },
+    { name: '대학 동기 일동', message: '재승이 장가간다! 축하한다 친구야 💐 신혼여행 사진 꼭 보여줘라', date: '2026-09-25' },
+  ];
+  const GB_ERR = { link: '링크는 남길 수 없습니다', slow: '잠시 후 다시 시도해주세요', dup: '이미 같은 메시지가 등록되어 있습니다' };
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const gbApi = {
+    async list() {
+      if (GUESTBOOK_URL) return (await fetch(GUESTBOOK_URL)).json();
+      try { return JSON.parse(localStorage.getItem('guestbook')) || GUESTBOOK_DUMMY; } catch { return GUESTBOOK_DUMMY; }
+    },
+    async add(entry) {
+      if (GUESTBOOK_URL) {
+        const res = await fetch(GUESTBOOK_URL, { method: 'POST', body: JSON.stringify(entry) }); // text/plain → CORS preflight 없음
+        const d = await res.json();
+        if (!d.ok) throw new Error(d.reason || '');
+        return;
+      }
+      const all = await this.list();
+      all.unshift({ ...entry, date: new Date().toISOString() });
+      localStorage.setItem('guestbook', JSON.stringify(all));
+    },
+  };
+  let gbAll = [], gbShown = 5;
+  const gbRender = () => {
+    $('#gbList').innerHTML = gbAll.length ? gbAll.slice(0, gbShown).map(e => `<div class="gb-item"><p>${esc(e.message)}</p><div><b>${esc(e.name)}</b><time>${new Date(e.date).toLocaleDateString('ko-KR')}</time></div></div>`).join('')
+      : '<p class="gb-empty">첫 번째 축하 메시지를 남겨주세요 🤍</p>';
+    $('#gbMore').hidden = gbAll.length <= gbShown;
+  };
+  const gbLoad = () => gbApi.list().then(d => { gbAll = d; gbRender(); }, () => $('#gbList').innerHTML = '<p class="gb-empty">방명록을 불러오지 못했습니다</p>');
+  const gbMsg = $('#gbForm').elements.message;
+  const gbCount = () => { $('#gbCount').textContent = gbMsg.value.length; $('#gbCount').parentNode.classList.toggle('full', gbMsg.value.length >= gbMsg.maxLength); };
+  gbMsg.oninput = gbCount;
+  $('#gbMore').onclick = () => { gbShown += 5; gbRender(); };
+  $('#gbForm').onsubmit = async e => {
+    e.preventDefault();
+    const f = e.target, btn = f.querySelector('button');
+    const entry = { name: f.elements.name.value.trim(), message: f.elements.message.value.trim(), hp: f.elements.hp.value };
+    if (!entry.name || !entry.message) return toast('이름과 메시지를 입력해주세요');
+    btn.disabled = true;
+    try { await gbApi.add(entry); f.reset(); gbCount(); toast('축하 메시지가 등록되었습니다'); gbShown = 5; await gbLoad(); }
+    catch (err) { toast(GB_ERR[err.message] || '등록에 실패했습니다. 잠시 후 다시 시도해주세요'); }
+    btn.disabled = false;
+  };
+  gbLoad();
+
+  // 공유
+  $('#shareBtn').onclick = async () => {
+    const data = { title: document.title, url: location.href };
+    if (navigator.share) { try { await navigator.share(data); } catch {} }
+    else navigator.clipboard.writeText(location.href).then(() => toast('링크가 복사되었습니다'));
+  };
+
+  // 콘솔 인사말 (콘솔을 연 사람에게만 보임)
+  console.log('%c어재승 ♥ 이환주', 'font-size:28px;font-weight:700;color:#b88f76;padding:12px 0');
+  console.log('%c여기까지 들여다보는 당신, 분명 개발자시죠? 👀', 'font-size:14px;color:#3b3733');
+  console.log('%c소스 구경은 좋지만, 축하 한마디는 방명록에 남겨주세요 🤍', 'font-size:13px;color:#8c847c');
+  console.log('%c2026. 11. 14  SAT', 'font-family:serif;font-size:12px;color:#b88f76;letter-spacing:.2em');
+
+  // 스크롤 등장 효과
+  const io = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && (e.target.classList.add('in'), io.unobserve(e.target))), { threshold: .15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
