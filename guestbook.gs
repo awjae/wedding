@@ -37,10 +37,14 @@ function doPost(e) {
     if (last > 1) {
       const n20 = Math.min(20, last - 1);
       const recent = sh.getRange(last - n20 + 1, 1, n20, 3).getValues();
-      // 연타 차단: 마지막 글과 10초 이상 간격
-      if (new Date() - new Date(recent[n20 - 1][0]) < 10000) return json({ ok: false, reason: 'slow' });
-      // 도배 차단: 최근 20개에 같은 내용 금지
-      if (recent.some(r => String(r[2]).trim() === m)) return json({ ok: false, reason: 'dup' });
+      // 같은 이름이 쓴 글만 검사. 전역으로 하면 여러 하객이 동시에 쓸 때 정상 글이 거부됨
+      const mine = recent.filter(r => String(r[1]).trim() === n);
+      if (mine.length) {
+        // 연타 차단: 같은 사람이 10초 안에 또 쓰기
+        if (new Date() - new Date(mine[mine.length - 1][0]) < 10000) return json({ ok: false, reason: 'slow' });
+        // 도배 차단: 같은 사람이 같은 내용 또 쓰기
+        if (mine.some(r => String(r[2]).trim() === m)) return json({ ok: false, reason: 'dup' });
+      }
     }
     // 스프레드시트 수식 주입 방지
     const safe = s => (/^[=+\-@]/.test(s) ? "'" + s : s);

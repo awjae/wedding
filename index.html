@@ -10,6 +10,8 @@
 <meta property="og:url" content="https://awjae.github.io/wedding/">
 <meta property="og:type" content="website">
 <meta name="robots" content="noindex">
+<link rel="preconnect" href="https://script.google.com" crossorigin>
+<link rel="preconnect" href="https://script.googleusercontent.com" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Serif+KR:wght@300;400;500&display=swap">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
@@ -278,6 +280,10 @@
   // 방명록: GUESTBOOK_URL 에 Google Apps Script 웹앱 주소를 넣으면 실제 저장 (guestbook.gs 참고)
   //        비어 있으면 이 브라우저에만 저장되는 미리보기 모드
   const GUESTBOOK_URL = 'https://script.google.com/macros/s/AKfycbxwPzvM5gJW5PmdixIpd2ez5NCrhzy0vo6rIWkRLLvViVClw2L8Q9mZpBLAU3kdah0n/exec';
+  // 목록 조회용. 시트를 '링크가 있는 모든 사용자(보기)'로 공유해야 동작하고, 안 되면 위 URL 로 폴백
+  const GUESTBOOK_SHEET = 'https://docs.google.com/spreadsheets/d/1viu26HGa9_n2jfHe0gfJL-NCpjqHhwfaJomGDc1elCw/gviz/tq?tqx=out:json';
+  // gviz 는 날짜를 "Date(2026,9,6,22,2,0)" 문자열로 줌 (월이 0부터)
+  const gbDate = v => { const n = String(v).match(/\d+/g); return n ? new Date(...n.map(Number)) : v; };
   // 미리보기용 더미 메시지 (GUESTBOOK_URL 을 넣으면 사용되지 않음)
   const GUESTBOOK_DUMMY = [
     { name: '민지', message: '재승아 환주야 결혼 정말 축하해! 🎉\n둘이 함께하는 모습 보기만 해도 행복해 보여. 앞으로도 지금처럼 예쁘게 살아!', date: '2026-10-05' },
@@ -290,6 +296,17 @@
   const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const gbApi = {
     async list() {
+      // 시트에서 직접 읽기(~0.4초). Apps Script 를 거치면 콜드스타트로 2~8초가 걸림
+      if (GUESTBOOK_SHEET) {
+        try {
+          const t = await (await fetch(GUESTBOOK_SHEET)).text();
+          return JSON.parse(t.slice(t.indexOf('{'), t.lastIndexOf('}') + 1)).table.rows
+            .map(r => (r.c || []).map(c => c && c.v))
+            .filter(([, n, m]) => n && m)
+            .map(([d, n, m]) => ({ date: gbDate(d), name: n, message: m }))
+            .reverse();                            // 시트는 오래된 순 → 최신 순으로
+        } catch { /* 실패하면 아래 Apps Script 로 폴백 */ }
+      }
       if (GUESTBOOK_URL) return (await fetch(GUESTBOOK_URL)).json();
       try { return JSON.parse(localStorage.getItem('guestbook')) || GUESTBOOK_DUMMY; } catch { return GUESTBOOK_DUMMY; }
     },
@@ -311,7 +328,14 @@
       : '<p class="gb-empty">첫 번째 축하 메시지를 남겨주세요 🤍</p>';
     $('#gbMore').hidden = gbAll.length <= gbShown;
   };
-  const gbLoad = () => gbApi.list().then(d => { gbAll = d; gbRender(); }, () => $('#gbList').innerHTML = '<p class="gb-empty">방명록을 불러오지 못했습니다</p>');
+  // Apps Script 응답이 2~5초라, 지난번 목록을 먼저 그리고 뒤에서 갱신 (재방문 시 체감 0초)
+  const GB_CACHE = 'gb-cache';
+  const gbCached = v => { try { return v === undefined ? JSON.parse(localStorage.getItem(GB_CACHE)) : localStorage.setItem(GB_CACHE, JSON.stringify(v.slice(0, 20))); } catch { return null; } };
+  const gbLoad = () => {
+    if (GUESTBOOK_URL && !gbAll.length) { const c = gbCached(); if (c && c.length) { gbAll = c; gbRender(); } }
+    return gbApi.list().then(d => { gbAll = d; gbRender(); gbCached(d); },
+      () => { if (!gbAll.length) $('#gbList').innerHTML = '<p class="gb-empty">방명록을 불러오지 못했습니다</p>'; });
+  };
   const gbMsg = $('#gbForm').elements.message;
   const gbCount = () => { $('#gbCount').textContent = gbMsg.value.length; $('#gbCount').parentNode.classList.toggle('full', gbMsg.value.length >= gbMsg.maxLength); };
   gbMsg.oninput = gbCount;
@@ -321,9 +345,19 @@
     const f = e.target, btn = f.querySelector('button');
     const entry = { name: f.elements.name.value.trim(), message: f.elements.message.value.trim(), hp: f.elements.hp.value };
     if (!entry.name || !entry.message) return toast('이름과 메시지를 입력해주세요');
+    // 목록 맨 위에 먼저 올리고, 전송은 뒤에서 (재조회 없음 — 새로고침할 때만 다시 읽음)
+    const mine = { name: entry.name, message: entry.message, date: new Date() };
+    gbAll.unshift(mine); gbShown = 5; gbRender();
+    f.reset(); gbCount();
     btn.disabled = true;
-    try { await gbApi.add(entry); f.reset(); gbCount(); toast('축하 메시지가 등록되었습니다'); gbShown = 5; await gbLoad(); }
-    catch (err) { toast(GB_ERR[err.message] || '등록에 실패했습니다. 잠시 후 다시 시도해주세요'); }
+    try { await gbApi.add(entry); gbCached(gbAll); toast('축하 메시지가 등록되었습니다'); }
+    catch (err) {
+      const i = gbAll.indexOf(mine);                               // 전송 실패 → 올렸던 글 내리고
+      if (i > -1) { gbAll.splice(i, 1); gbRender(); }              // (-1 이면 splice 가 남의 글을 지움)
+      f.elements.name.value = mine.name;                           // 쓴 내용은 날리지 않기
+      f.elements.message.value = mine.message; gbCount();
+      toast(GB_ERR[err.message] || '등록에 실패했습니다. 잠시 후 다시 시도해주세요');
+    }
     btn.disabled = false;
   };
   gbLoad();
