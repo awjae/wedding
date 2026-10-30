@@ -305,7 +305,7 @@
   //        비어 있으면 이 브라우저에만 저장되는 미리보기 모드
   const GUESTBOOK_URL = 'https://script.google.com/macros/s/AKfycbxwPzvM5gJW5PmdixIpd2ez5NCrhzy0vo6rIWkRLLvViVClw2L8Q9mZpBLAU3kdah0n/exec';
   // 목록 조회용. 시트를 '링크가 있는 모든 사용자(보기)'로 공유해야 동작하고, 안 되면 위 URL 로 폴백
-  const GUESTBOOK_SHEET = 'https://docs.google.com/spreadsheets/d/1viu26HGa9_n2jfHe0gfJL-NCpjqHhwfaJomGDc1elCw/gviz/tq?tqx=out:json';
+  const GUESTBOOK_SHEET = 'https://docs.google.com/spreadsheets/d/1viu26HGa9_n2jfHe0gfJL-NCpjqHhwfaJomGDc1elCw/gviz/tq?tqx=out:json&headers=1'; // headers=1: 데이터가 0건이면 gviz 가 1행(헤더)을 데이터로 오인함
   // gviz 는 날짜를 "Date(2026,9,6,22,2,0)" 문자열로 줌 (월이 0부터)
   const gbDate = v => { const n = String(v).match(/\d+/g); return n ? new Date(...n.map(Number)) : v; };
   // 미리보기용 더미 메시지 (GUESTBOOK_URL 을 넣으면 사용되지 않음)
